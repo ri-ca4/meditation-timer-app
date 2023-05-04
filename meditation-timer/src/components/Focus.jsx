@@ -32,6 +32,7 @@ const Focus = () => {
           secs.current= 0;
           mins.current= focus;
           displayPomodoro();
+          document.getElementById('pomodoro-buttons').style.visibility = "visible";
       }else{
           alert('Please enter desired times');
       }
@@ -63,33 +64,37 @@ const Focus = () => {
   }, [isRunning, displayPomodoro]);
 
   const handleStart = ()=>{
-    document.getElementById('start').setAttribute("disabled", "true");
-    document.getElementById('pause').removeAttribute("disabled");
+    document.getElementById('start').style.display= "none";
+    document.getElementById('pause').style.display= "block";
     setIsRunning(true);
   }
 
   const handlePause = ()=>{
-    document.getElementById('start').removeAttribute("disabled");
-    document.getElementById('pause').setAttribute("disabled", "true");
+    document.getElementById('start').style.display = "block";
+    document.getElementById('pause').style.display = "none";
     setIsRunning(false);
   }
 
 
   return (
     <div className='pomodoro'>
-      <label>Focus:</label>
-      <input type="number" id="focusTime" onChange={handleFocus}/><br/>
-      <label>Break:</label>
-      <input type="number" id="breakTime" onChange={handleBrek}/>
-      <button id="setPomodoro" onClick={handleSet}>Set Timer</button>
+      <div id="pomodoro-input">
+        <label>Focus:</label>
+        <input type="number" id="focusTime" onChange={handleFocus}/><br/>
+        <label>Break:</label>
+        <input type="number" id="breakTime" onChange={handleBrek}/><br/>
+        <button id="setPomodoro" onClick={handleSet}>Set Timer</button>
+      </div>
       <div id="display-pomodoro">
-          <h1 id="pomodoro-timer">
+          <h1>
               <span id="minutes"></span>:
               <span id="seconds"></span>
           </h1>
-          <button id="start" onClick={handleStart}>Start</button>
-          <button id="pause" onClick={handlePause}>Pause</button>
       </div>
+      <div id="pomodoro-buttons">
+            <button id="start" onClick={handleStart}>Start</button>
+            <button id="pause" onClick={handlePause}>Pause</button>
+          </div>
     </div>
   )
 }

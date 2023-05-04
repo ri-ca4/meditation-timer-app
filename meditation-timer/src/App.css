@@ -108,3 +108,23 @@ label{
 #breathe-buttons #pause{
   display: none;
 }
+
+/*Focus*/
+
+.pomodoro{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+  background-color: #64ed645f;
+}
+
+#pomodoro-buttons{
+  visibility: hidden;
+}
+
+#pomodoro-buttons #pause{
+  display: none;
+}
