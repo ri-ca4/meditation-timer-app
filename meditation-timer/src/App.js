@@ -37,9 +37,16 @@ function App() {
         </ul>
       </nav>
       <div className='timer'>
-        {showMeditate && <Meditate />}
-        {showBreathe && <Breathe />}
-        {showFocus && <Focus />}
+        {showMeditate ? <Meditate /> :
+          showBreathe ? <Breathe /> :
+          showFocus ? <Focus /> :
+          <div className="welcome">
+            <h1>Welcome!</h1>
+            <p>This site provides 3 different timers: A simple meditation timer to help you unwind,
+              a breathing timer to help you destress, and a Pomodoro timer to help you focus! Click an option to get started.
+            </p>
+          </div>
+        }
       </div>
     </div>
   );
