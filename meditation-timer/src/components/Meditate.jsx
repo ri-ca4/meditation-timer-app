@@ -1,12 +1,14 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState, useRef } from 'react';
+import bell from './../assets/bell.mp3'
 
 const Meditate = () => {
   const [userInput, setUserInput] = useState();
   const [isRunning, setIsRunning] = useState(false);
   let mins = useRef(10);
   let secs = useRef(0);
+
 
   const handleInput = (e)=>{
     setUserInput(e.target.value);
@@ -40,9 +42,13 @@ const Meditate = () => {
     if(isRunning){
       const interval = setInterval(()=>{
         if (mins.current === 0 && secs.current <=0) {
+          new Audio(bell).play()
           clearInterval();
           secs.current= 0;
           setIsRunning(false);
+          document.getElementById('pause').style.display = "none";
+          document.getElementById('start').style.display = "block";
+          document.getElementById('meditate-buttons').style.visibility = "hidden";
         }else{
           if(secs.current === 0){
               mins.current = mins.current-1;

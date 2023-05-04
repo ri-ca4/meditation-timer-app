@@ -1,13 +1,15 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState, useRef } from 'react';
+import bell from './../assets/bell.mp3'
+
 
 const Focus = () => {
   const [focus, setFocus] = useState();
   const [brek, setBrek] = useState();
   const [isRunning, setIsRunning] = useState(false);
   const [takeBreak, setTakeBreak] = useState(false);
-  let mins = useRef(10);
+  let mins = useRef(20);
   let secs = useRef(0);
 
   function displayPomodoro(){
@@ -38,10 +40,12 @@ const Focus = () => {
       }
   }
 
+
   useEffect(() => {
     if(isRunning){
       const interval = setInterval(()=>{
         if (mins.current == 0 && secs.current <=0) {
+          new Audio(bell).play()
           if (takeBreak){
               setTakeBreak(false);
               mins.current= focus

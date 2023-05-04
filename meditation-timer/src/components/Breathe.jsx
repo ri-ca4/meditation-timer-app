@@ -1,13 +1,14 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState, useRef } from 'react';
+import bell from './../assets/bell.mp3'
+
 
 const Breathe = () => {
   const [isRunning, setIsRunning] = useState(false);
   let count = useRef(0);
   let index = useRef(0);
   const fourSquare = ['Breathe In', 'Hold', 'Breathe Out', 'Hold'];
-
 
   const displayCount = ()=>{
     document.getElementById('instructions').innerHTML = fourSquare[index.current];
@@ -18,6 +19,7 @@ const Breathe = () => {
     if(isRunning){
       const interval = setInterval(()=>{
         if(count.current===4){
+          new Audio(bell).play()
           count.current= 0
           if(index.current === fourSquare.length -1){index.current= -1}
           index.current = index.current+1

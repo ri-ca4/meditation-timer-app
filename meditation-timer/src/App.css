@@ -69,6 +69,16 @@ label{
   font-size: 1.5em;
 }
 
+.welcome{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 10vw;
+}
+
 
 /*MEDITATE*/
 .meditate{
@@ -127,4 +137,8 @@ label{
 
 #pomodoro-buttons #pause{
   display: none;
+}
+
+#display-pomodoro{
+  font-size: 3em;
 }
