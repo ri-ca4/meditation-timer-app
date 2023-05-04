@@ -30,14 +30,14 @@ const Breathe = () => {
   }, [isRunning, displayCount]);
 
   const handleStart = ()=>{
-    document.getElementById('start').setAttribute("disabled", "true");
-    document.getElementById('pause').removeAttribute("disabled");
+    document.getElementById('start').style.display = "none";
+    document.getElementById('pause').style.display = "block";
     setIsRunning(true);
   }
 
   const handlePause = ()=>{
-    document.getElementById('start').removeAttribute("disabled");
-    document.getElementById('pause').setAttribute("disabled", "true");
+    document.getElementById('pause').style.display = "none";
+    document.getElementById('start').style.display = "block";
     setIsRunning(false);
   }
   
@@ -46,11 +46,13 @@ const Breathe = () => {
   return (
     <div className="breathe">
       <div id="display-counter">
-          <h1 id="instructions"></h1>
-          <h2 id="count"></h2>
+          <h1 id="instructions">Square Breathing is a paced breathing technique.</h1>
+          <h2 id="count">It can help to reduce stress!</h2>
       </div>
-      <button id="start" onClick={handleStart}>Start</button>
-      <button id="pause" onClick={handlePause}>Pause</button>
+      <div id="breathe-buttons">
+        <button id="start" onClick={handleStart}>Start</button>
+        <button id="pause" onClick={handlePause}>Pause</button>
+      </div>
     </div>
   )
 }

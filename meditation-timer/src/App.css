@@ -92,3 +92,19 @@ label{
 #meditate-timer{
   font-size: 3em;
 }
+
+/*Breathe*/
+
+.breathe{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+  background-color: #e6ed645f;
+}
+
+#breathe-buttons #pause{
+  display: none;
+}
