@@ -44,7 +44,7 @@ const Breathe = () => {
 
 
   return (
-    <div id="breathe">
+    <div className="breathe">
       <div id="display-counter">
           <h1 id="instructions"></h1>
           <h2 id="count"></h2>

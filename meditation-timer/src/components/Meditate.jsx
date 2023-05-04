@@ -25,8 +25,6 @@ const Meditate = () => {
   }
 
   function handleSet() {
-    document.getElementById('start').removeAttribute("disabled");
-    document.getElementById('pause').setAttribute("disabled", "true");
     if (userInput != null) {
       mins.current = userInput;
     }else{
@@ -34,7 +32,7 @@ const Meditate = () => {
     }
     secs.current = 0;
     displayTime();
-
+    document.getElementById('meditate-buttons').style.visibility = "visible";
   }
 
 
@@ -59,14 +57,14 @@ const Meditate = () => {
   }, [isRunning, displayTime]);
 
   const handleStart = ()=>{
-    document.getElementById('start').setAttribute("disabled", "true");
-    document.getElementById('pause').removeAttribute("disabled");
+    document.getElementById('start').style.display = "none";
+    document.getElementById('pause').style.display = "block";
     setIsRunning(true);
   }
 
   const handlePause = ()=>{
-    document.getElementById('start').removeAttribute("disabled");
-    document.getElementById('pause').setAttribute("disabled", "true");
+    document.getElementById('pause').style.display = "none";
+    document.getElementById('start').style.display = "block";
     setIsRunning(false);
   }
   
@@ -74,14 +72,16 @@ const Meditate = () => {
 
   return (
     <div className='meditate'>
-      <label>Minutes:</label>
-        <input type="number" id="userInput" onChange={handleInput}/>
+      <div id="meditate-input">
+        <input type="number" id="userInput" placeholder="10" onChange={handleInput}/>
+        <label>min</label><br/>
         <button id="set" onClick={handleSet}>Set Timer</button>
+      </div>
         <div id="meditate-timer">
-            <h1>
-                <span id="minutes"></span>:
-                <span id="seconds"></span>
-            </h1>
+          <h1><span id="minutes"></span>:
+            <span id="seconds"></span></h1>
+        </div>
+        <div id='meditate-buttons'>
             <button id="start" onClick={handleStart}>Start</button>
             <button id="pause" onClick={handlePause}>Pause</button>
         </div>

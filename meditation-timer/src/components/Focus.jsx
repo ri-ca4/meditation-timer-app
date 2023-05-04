@@ -90,7 +90,7 @@ const Focus = () => {
           <button id="start" onClick={handleStart}>Start</button>
           <button id="pause" onClick={handlePause}>Pause</button>
       </div>
-  </div>
+    </div>
   )
 }
 
